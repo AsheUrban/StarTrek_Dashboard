@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -18,9 +20,15 @@ namespace StarTrekDash.Controllers
             _logger = logger;
         }
 
+        
+
         public IActionResult Index()
         {
-            return View();
+            var allWeather = Weather.GetWeather();
+            var allArticles = Article.GetArticles();
+            // string date = Date.CurrentTime;
+            ViewBag.Date = Date.Stardate();
+            return View(allArticles);
         }
 
         public IActionResult Privacy()
