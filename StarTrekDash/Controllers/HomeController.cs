@@ -27,7 +27,7 @@ namespace StarTrekDash.Controllers
             var allWeather = Weather.GetWeather();
             var allArticles = Article.GetArticles();
             // string date = Date.CurrentTime;
-            ViewBag.Date = Date.Stardate();
+            ViewBag.Date = StarDate.get_Now();
             return View(allArticles);
         }
 
