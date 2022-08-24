@@ -22,6 +22,8 @@ namespace StarTrekDash
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
+                    
                 });
     }
 }

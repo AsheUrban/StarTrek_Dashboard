@@ -3,25 +3,27 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+
 namespace StarTrekDash.Models
 {
   public class Weather
   {
+    public int clouds { get; set; }
+    // public string wind_cdir {get; set;}
+    // public 
+
     
-    public string Temp { get; set; }
-    public  string Feels_Like { get; set; }
-  
-  
-    public static Weather GetWeather()
+    public static List<Weather> get_Weather()
     {
       var apiCallTask = ApiHelper.GetAllWeather();
-      var resultWeather = apiCallTask.Result;
-      
-      var weather = JsonConvert.DeserializeObject<Weather>(resultWeather);
-      
-      //JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(resultWeather);
-     // Weather weather = JsonConvert.DeserializeObject<Weather>(jsonResponse["resultWeathers"].ToString());
-      return weather;
+      var weatherResult = apiCallTask.Result;
+     
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(weatherResult);
+       Console.WriteLine(jsonResponse);
+       List<Weather> WeatherInfo = JsonConvert.DeserializeObject<List<Weather>>(jsonResponse["data"].ToString());
+    
+      return WeatherInfo;
     }
   }
+  
 }

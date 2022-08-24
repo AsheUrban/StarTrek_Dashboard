@@ -24,10 +24,11 @@ namespace StarTrekDash.Controllers
 
         public IActionResult Index()
         {
-            var allWeather = Weather.GetWeather();
             var allArticles = Article.GetArticles();
-            // string date = Date.CurrentTime;
-            ViewBag.Date = StarDate.get_Now();
+            ViewBag.Time = StarDate.get_Time();
+            ViewBag.StarDate = StarDate.get_StarDate();
+            
+            ViewBag.Weather = Weather.get_Weather();
             return View(allArticles);
         }
 

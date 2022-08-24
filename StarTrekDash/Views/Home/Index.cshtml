@@ -4,14 +4,21 @@
 
 @using StarTrekDash.Models
 @model List<StarTrekDash.Models.Article>
+
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <div class="container">
 
-<h3>@ViewBag.Date</h3>
+<h4>@ViewBag.Time</h4>
+<h4>@ViewBag.StarDate</h4>
 
+@foreach(Weather weather in ViewBag.Weather)
+{
+    @weather.clouds
+}
 
 @foreach(Article article in Model)
 {

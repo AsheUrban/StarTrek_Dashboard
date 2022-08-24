@@ -8,18 +8,28 @@ namespace StarTrekDash.Models
 {
 	public class StarDate 
 	{
-  public static double get_Now()
+  public static string get_Time()
 	{
     string time = new (DateTime.Now.ToString("HH:mm:ss"));
-    double date = DateTime.Now.ToOADate();
-		double starDate = date / 1000 * 60 * 60 * 24 * 0.036525 ;
-		var starDate1 = Math.Floor(starDate + 410000);
-		double starDate2 = starDate1/ 10;
-		return starDate2;
+		return "Time: " + time;
+	}
+	public static string get_StarDate()
+	{
+		string date = new (DateTime.Today.ToString("MM-dd-yyyy"));
+
+		//math for star date
+		string dayOfWeek = new (DateTime.Today.DayOfWeek.ToString());
+		return dayOfWeek + "            " + date;
+		// string resultString = Regex.Match(date, @"\d+").Value;
+		// var datenum = Int32.Parse(resultString);
+		// return datenum;
+
 
 	}
 
-	
+	}
+	}
+
 	
   
     // public static double Stardate()
@@ -33,9 +43,5 @@ namespace StarTrekDash.Models
     //   stardate = stardate / 100;
     //   return stardate;
     // }
-  }}
-
-
-
 
 
